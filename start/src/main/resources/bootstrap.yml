@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: flash-sale
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.31.34:30826
+        namespace: public
+        group: DEFAULT_GROUP
+        file-extension: yaml
+  logstash:
+    host: 127.0.0.1
+
+
