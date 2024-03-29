@@ -56,8 +56,8 @@
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="LOG_STASH"/>
+        <!-- <appender-ref ref="LOG_STASH"/> -->
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="APPLICATION"/>
+        <!-- <appender-ref ref="APPLICATION"/> -->
     </root>
 </configuration>
