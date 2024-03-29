@@ -10,8 +10,8 @@ import com.actionworks.flashsale.domain.service.FlashItemDomainService;
 import com.actionworks.flashsale.lock.DistributedLock;
 import com.actionworks.flashsale.lock.DistributedLockFactoryService;
 import com.alibaba.fastjson.JSON;
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,8 @@ import static com.actionworks.flashsale.app.model.constants.CacheConstants.ITEMS
 @Service
 public class FlashItemsCacheService {
     private final static Logger logger = LoggerFactory.getLogger(FlashItemsCacheService.class);
-    private final static Cache<Long, FlashItemsCache> flashItemsLocalCache = CacheBuilder.newBuilder().initialCapacity(10).concurrencyLevel(5).expireAfterWrite(10, TimeUnit.SECONDS).build();
+
+    private final static Cache<Long, FlashItemsCache> flashItemsLocalCache = Caffeine.newBuilder().initialCapacity(10).expireAfterWrite(10, TimeUnit.SECONDS).build();
     private static final String UPDATE_ITEMS_CACHE_LOCK_KEY = "UPDATE_ITEMS_CACHE_LOCK_KEY_";
     private final Lock localCacleUpdatelock = new ReentrantLock();
 
