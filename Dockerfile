@@ -1,4 +1,4 @@
-FROM eclipse-temurin:8-jre
+FROM eclipse-temurin:8-jdk
 VOLUME /tmp
 ADD ./start/target/start-0.0.1-SNAPSHOT.jar app.jar
 RUN sh -c 'touch /app.jar'
